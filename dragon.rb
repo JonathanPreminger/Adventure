@@ -1,28 +1,24 @@
+require_relative 'game'
+
 
 class Dragon
 
-  def self.fight?
-    puts "wanna fight?"
-    response = gets.chomp
-    if response == "yes"
-      puts "lets fight..."
-      Dragon.fight_indeed
-    elsif response == "no"
-      puts "what a coward ! Run before he burn you up !"
-      sleep 1
-      Room.three
-    else
-      puts "what did you say ?"
-      Dragon.fight?
-    end
+  def coward_end
+    puts "Bravo! You saved your life ! What a Knight"
   end
 
-  def self.run
-    puts "You have 5 seconds to leave the cave !!!"
-    Room.move
+  def fight_without_secret_weapon
+    puts "He just burn you up, you're dead, Game Over..."
+    sleep 1
   end
 
-  def self.fight_indeed
+  def fight_with_secret_weapon
+    puts "You kill the King's Dragon with the Magic Secret Weapon !!! Game Success !!!"
+    sleep 1
   end
 
+  def the_dragon_is_sleeping
+    puts "the dragon is sleeping, he didn't see you yet, kill him ! Success !!!"
+    sleep 1
+  end
 end

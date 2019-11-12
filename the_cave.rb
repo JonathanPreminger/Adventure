@@ -1,5 +1,22 @@
 
 class TheCave
+
+  def map_the_move(position)
+    puts "mapping!"
+    puts position
+    if position == "origin"
+      the_cave("X",nil,nil,nil,nil)
+    elsif position == "room one"
+      the_cave(nil,"X",nil,nil,nil)
+    elsif position == "room two"
+      the_cave(nil,nil,"X",nil,nil)
+    elsif position == "room three"
+      the_cave(nil,nil,nil,"X",nil)
+    elsif position == "esc"
+      the_cave(nil,nil,nil,nil,"X")
+    end
+  end
+
   def the_cave(origin,one,two,three,four)
     puts `clear`
 
@@ -53,11 +70,9 @@ class TheCave
     puts "          |     |              "
     puts "             #{three}                  "
     puts "          |_____|             "
-
     sleep 1
     puts "Where ..."
     sleep 1
-
     puts `clear`
     puts "         _________ "
     puts "         |       |"

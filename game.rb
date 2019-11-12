@@ -1,6 +1,5 @@
 require_relative 'dragon'
 require_relative 'witch'
-require_relative 'secret_passage'
 require_relative 'the_cave'
 
 class Game
@@ -35,8 +34,6 @@ class Game
       puts "Oh my god, the King of Dragons is here"
       @ever_been_to_room_three = true
       meet_dragon
-    elsif three == "X" && @ever_been_to_room_three == true
-
     elsif one == "X"
       access_to_secret_passage
     elsif  two == "X" # three options possible

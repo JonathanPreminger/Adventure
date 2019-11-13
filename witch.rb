@@ -87,7 +87,6 @@ class Witch
     puts "     |  |        --/  \\--- |"
     puts "     |  |         /    \\   |"
     puts "    _|  |_       / _ _  \\ /|\\ "
-
     sleep 1
     puts `clear`
     puts "         \\ "

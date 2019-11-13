@@ -7,17 +7,17 @@ class Dragon
   end
 
   def coward_end
-    @message.display_message("Bravo! You saved your life ! What a Knight")
+    abort("Bravo! You saved your life ! What a Knight")
   end
 
   def fight_without_secret_weapon
     @message.display_message("lets fight...")
-    @message.display_message("He just burn you up, you're dead, Game Over...")
+    abort("He just burn you up, you're dead, Game Over...")
   end
 
   def fight_with_secret_weapon
     @message.display_message("lets fight...")
-    @message.display_message("You kill the King's Dragon with the Magic Secret Weapon !!! Game Success !!!")
+    abort("You kill the King's Dragon with the Magic Secret Weapon !!! Game Success !!!")
   end
 
   def leave
@@ -26,6 +26,6 @@ class Dragon
   end
 
   def the_dragon_is_sleeping
-    @message.display_message("the dragon is sleeping, he didn't see you yet, kill him ! Success !!!")
+    abort("the dragon is sleeping, he didn't see you yet, kill him ! Success !!!")
   end
 end

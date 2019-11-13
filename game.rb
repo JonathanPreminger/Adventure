@@ -42,11 +42,9 @@ class Game
     elsif  position == "room two" # three options possible
       if @witch.already_met_witch == true &&  @witch.dead_witch == false
         @message.display_message("you already met the witch")
-        round
       elsif
         @witch.already_met_witch == true &&  @witch.dead_witch == true
         @message.display_message("you already kill the witch")
-        round
       else
         witch_scenario
       end
@@ -56,8 +54,6 @@ class Game
       in_the_secret_passage
     elsif position == "secret passage" && @ever_been_to_room_three == true
       @message.display_message("Thank's for playing !!")
-    else
-      round
     end
   end
 
@@ -70,13 +66,11 @@ class Game
   def access_to_secret_passage # show the begining of a secret passage
     @the_cave.is_there_a_secret_passage?(nil,"X",nil,nil,nil)
     @message.display_message("This room is empty")
-    round
   end
 
   def witch_scenario
     @witch.scenario
     @the_cave.the_cave(nil,nil,"X",nil,nil)
-    round
   end
 
   def round
@@ -88,6 +82,7 @@ class Game
     @movement.movement(@move,@movement.position,@ever_been_to_room_three)
     @the_cave.map_the_move(@movement.position)
     check_room(@movement.position,@ever_been_to_room_three)
+    round
   end
 
   def extinguish_the_torch

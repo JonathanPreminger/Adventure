@@ -7,8 +7,8 @@ class Movement
   attr_accessor :position
 
   def initialize
-    @position = ""
     @message = Message.new
+    @position = "origin"
   end
 
   def movement(move, position, ever_been_to_room_three)

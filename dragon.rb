@@ -8,11 +8,11 @@ class Dragon
     @end_game = EndGame.new
   end
 
-  def meet_dragon
+  def meet_dragon(secret_weapon)
     @message.display_message("Oh my god, the King of Dragons is here")
     @message.display_message("want to fight?(yes/no)")
     ask_for_fight
-    scenario_dragon(@response,@witch.witch_give_secret_weapon)
+    scenario_dragon(@response,secret_weapon)
   end
 
   def ask_for_fight

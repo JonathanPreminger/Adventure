@@ -19,28 +19,49 @@ class RoundAction
   end
 
   def check_room(position,ever_been_to_room_three)
-    ever_been_to_room_three = @ever_been_to_room_three
-    if position == "room three" && @ever_been_to_room_three == nil
-      @ever_been_to_room_three = true
-      @dragon.meet_dragon(@witch.witch_give_secret_weapon)
-    elsif position == "room one"
-      @the_cave.access_to_secret_passage
-    elsif  position == "room two" # three options possible
-      if @witch.already_met_witch == true &&  @witch.dead_witch == false
-        @message.display_message("you already met the witch")
-      elsif
-        @witch.already_met_witch == true &&  @witch.dead_witch == true
-        @message.display_message("you already kill the witch")
-      else
-        @witch.witch_scenario
-      end
-    elsif position == "esc"
-      @dragon.coward_end
-    elsif position == "secret passage" && @ever_been_to_room_three == nil
-      @the_cave.in_the_secret_passage
-    elsif position == "secret passage" && @ever_been_to_room_three == true
-      @message.display_message("Thank's for playing !!")
+    case position
+    when "room three"
+      room_three(ever_been_to_room_three)
+    when "room one"
+      room_one
+    when "room two" # three options possible
+      room_two
+    when "esc"
+      escape
+    when "secret passage"
+      secret_passage(ever_been_to_room_three)
     end
+  end
+
+  def room_three(ever_been_to_room_three)
+    ever_been_to_room_three = @ever_been_to_room_three
+    if @ever_been_to_room_three == nil
+    @ever_been_to_room_three = true
+    @dragon.meet_dragon(@witch.witch_give_secret_weapon)
+    end
+  end
+
+  def room_one
+    @the_cave.access_to_secret_passage
+  end
+
+  def room_two
+    if @witch.already_met_witch == true &&  @witch.dead_witch == false
+      @message.display_message("you already met the witch")
+    elsif
+      @witch.already_met_witch == true &&  @witch.dead_witch == true
+      @message.display_message("you already kill the witch")
+    else
+      @witch.witch_scenario
+    end
+  end
+
+  def escape
+    @dragon.coward_end
+  end
+
+  def secret_passage(ever_been_to_room_three)
+    @the_cave.in_the_secret_passage unless @ever_been_to_room_three != nil
   end
 
   def round

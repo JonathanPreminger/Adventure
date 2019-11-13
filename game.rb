@@ -20,6 +20,12 @@ class Game
     @ever_been_to_room_three = nil
   end
 
+  def start(safe_mode: true)
+    enter_the_cave
+  end
+
+  private
+
   def enter_the_cave
     @message.display_message("Welcome in the Black Knight's quest")
     @message.display_message("you have to find the King of Dragons in his deep cave...")

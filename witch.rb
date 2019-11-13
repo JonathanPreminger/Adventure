@@ -21,7 +21,6 @@ class Witch
   def get_weapon
     kneel
     nice_witch
-    sleep 1
     @witch_give_secret_weapon = true
   end
 
@@ -29,7 +28,6 @@ class Witch
     @witch_give_secret_weapon = false
     @dead_witch = true
     hit_witch
-    sleep 1
   end
 
   def meet_the_witch
@@ -66,7 +64,6 @@ class Witch
    def nice_witch
      @message.display_message("you seems to be a good Knight, I'll give you a special trick that will help you to kill the king of dragons")
      sleep 2
-
    end
 
    def kneel

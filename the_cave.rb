@@ -22,7 +22,6 @@ class TheCave
 
   def the_cave(origin,one,two,three,four)
     puts `clear`
-
     puts "             #{one}   "
     puts "         |       |   "
     puts "         |__   __|   "

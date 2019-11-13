@@ -1,3 +1,4 @@
+require_relative "message"
 
 class Witch
   attr_reader :witch_give_secret_weapon, :dead_witch, :already_met_witch
@@ -6,6 +7,7 @@ class Witch
     @witch_give_secret_weapon = false
     @dead_witch = false
     @already_met_witch = false
+    @message = Message.new
   end
 
   def scenario

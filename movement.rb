@@ -1,20 +1,25 @@
 
+require_relative "message"
+
+
 class Movement
 
   attr_accessor :position
 
   def initialize
     @position = ""
+    @message = Message.new
   end
 
   def movement(move, position, ever_been_to_room_three)
-    if move == "\e[D"
+    case move
+    when "\e[D"
       to_the_left(position, ever_been_to_room_three)
-    elsif  move == "\e[C"
+    when "\e[C"
       to_the_right(position, ever_been_to_room_three)
-    elsif  move == "\e[B"
+    when "\e[B"
       to_the_bottom(position, ever_been_to_room_three)
-    elsif  move == "\e[A"
+    when "\e[A"
       to_the_top(position, ever_been_to_room_three)
     end
   end
@@ -58,9 +63,10 @@ class Movement
   end
 
   def to_the_top(position, ever_been_to_room_three)
-    if position == "origin"
+    case position
+    when "origin"
       @position = "room one"
-    elsif position == "room three"
+    when "room three"
       @position = "origin"
     else
       wrong_direction

@@ -1,4 +1,5 @@
 require_relative "message"
+require_relative "the_cave"
 
 class Witch
   attr_reader :witch_give_secret_weapon, :dead_witch, :already_met_witch
@@ -8,14 +9,14 @@ class Witch
     @dead_witch = false
     @already_met_witch = false
     @message = Message.new
+    @the_cave = TheCave.new
   end
 
   def scenario
     @already_met_witch = true
     meet_the_witch
     @message.display_message("What do you want to do ? (kneel/hit)")
-    @decision = get_decision
-    apply_choice(@decision)
+    apply_choice(get_decision)
   end
 
   def get_weapon
@@ -28,6 +29,11 @@ class Witch
     @witch_give_secret_weapon = false
     @dead_witch = true
     hit_witch
+  end
+
+  def witch_scenario
+    scenario
+    @the_cave.the_cave(nil,nil,"X",nil,nil)
   end
 
   def meet_the_witch
@@ -49,11 +55,10 @@ class Witch
    end
 
    def apply_choice(decision)
-     if decision == "kneel"
-       sleep 1
+     case decision
+     when "kneel"
        get_weapon
-     elsif decision == "hit"
-       sleep 1
+     when "hit"
        didnt_get_weapon
      else
        @message.display_message("you didn't respond to the question properly")
@@ -74,7 +79,6 @@ class Witch
     puts "       / ____|_       --/  \\--- |"
     puts "      /__    |         /_ _ \\  /|\\     "
     puts "    _|   |_  |        / _ _  \\ /|\\"
-
   end
 
   def hit_witch

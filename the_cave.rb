@@ -1,8 +1,11 @@
 require_relative "message"
+require_relative "dragon"
+
 class TheCave
 
   def initialize
     @message = Message.new
+    @dragon = Dragon.new
   end
 
   def map_the_move(position)
@@ -18,6 +21,17 @@ class TheCave
     when "esc"
       the_cave(nil,nil,nil,nil,"X")
     end
+  end
+
+  def access_to_secret_passage # show the begining of a secret passage
+    is_there_a_secret_passage?(nil,"X",nil,nil,nil)
+    @message.display_message("This room is empty")
+  end
+
+  def in_the_secret_passage # take the secret passage
+    @ever_been_to_room_three = true
+    secret_passage(nil,nil,nil,nil,nil,"X")
+    @dragon.the_dragon_is_sleeping
   end
 
   def the_cave(origin,one,two,three,four)

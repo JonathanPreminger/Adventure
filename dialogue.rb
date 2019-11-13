@@ -1,4 +1,12 @@
-class Dialogue
+class Message
+
+  def display_message(text)
+
+    puts text
+
+  end
+
+end
 
   def sorry?
     puts "what did you say?"
@@ -29,5 +37,5 @@ class Dialogue
   def already_kill_the_witch_indeed
     puts "you already kill the witch"
   end
-  
+
 end

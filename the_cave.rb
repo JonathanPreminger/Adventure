@@ -1,18 +1,21 @@
-
+require_relative "message"
 class TheCave
 
+  def initialize
+    @message = Message.new
+  end
+
   def map_the_move(position)
-    puts "mapping!"
-    puts position
-    if position == "origin"
+    case position
+    when "origin"
       the_cave("X",nil,nil,nil,nil)
-    elsif position == "room one"
+    when "room one"
       the_cave(nil,"X",nil,nil,nil)
-    elsif position == "room two"
+    when "room two"
       the_cave(nil,nil,"X",nil,nil)
-    elsif position == "room three"
+    when "room three"
       the_cave(nil,nil,nil,"X",nil)
-    elsif position == "esc"
+    when "esc"
       the_cave(nil,nil,nil,nil,"X")
     end
   end
@@ -32,6 +35,7 @@ class TheCave
     puts "          |     | "
     puts "             #{three} "
     puts "          |_____| "
+    sleep 1
   end
 
   def is_there_a_secret_passage?(origin,one,two,three,four)
@@ -71,8 +75,7 @@ class TheCave
     puts "             #{three}                  "
     puts "          |_____|             "
     sleep 1
-    puts "Where ..."
-    sleep 1
+    @message.display_message("Where ...")
     puts `clear`
     puts "         _________ "
     puts "         |       |"
@@ -90,9 +93,7 @@ class TheCave
     puts "             #{three}                 |  | "
     puts "          |_____|             "
     puts "            "
-    puts "            "
-    sleep 1
-    puts "Where this..."
+    @message.display_message("Where this ...")
     sleep 1
     puts `clear`
     puts "         _________ "
@@ -112,8 +113,7 @@ class TheCave
     puts "          |_   _|             |  |"
     puts "                  ____________|  |"
     puts "                  _____________#{secret}_|"
-    sleep 1
-    puts "Where this passage..."
+    @message.display_message("Where this passage ...")
     sleep 1
     puts `clear`
     puts "         _________ "
@@ -133,8 +133,7 @@ class TheCave
     puts "          |_   _|             |  |"
     puts "            | |_______________|  |"
     puts "            |#{secret}___________________|"
-    sleep 1
-    puts "Where this passage go ??!"
+    @message.display_message("Where this passage go ...")
     sleep 1
     puts `clear`
     puts "         _________ "
@@ -154,7 +153,7 @@ class TheCave
     puts "          |_ #{secret} _|             |  |"
     puts "            | |_______________|  |"
     puts "            |____________________|"
-    puts "The Dragon !!"
+    @message.display_message("The Dragon !!!")
     sleep 2
   end
 end

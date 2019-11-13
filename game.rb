@@ -2,7 +2,7 @@ require_relative 'dragon'
 require_relative 'witch'
 require_relative 'the_cave'
 require_relative 'movement'
-require_relative 'dialogue'
+require_relative 'message'
 
 
 
@@ -15,25 +15,18 @@ class Game
     @witch = Witch.new
     @the_cave = TheCave.new
     @movement = Movement.new
-    @dialogue = Dialogue.new
+    @message = Message.new
     @ever_been_to_room_three = nil
   end
 
   def enter_the_cave
-    puts "Welcome in the Black Knight's quest"
-    sleep 1
-    puts "you have to find the King of Dragons in his deep cave..."
-    sleep 1
+    @message.display_message("Welcome in the Black Knight's quest")
+    @message.display_message("you have to find the King of Dragons in his deep cave...")
     @the_cave.the_cave(nil,nil,nil,nil,nil)
-    sleep 1
-    puts "you just arrived in the cave"
-    sleep 2
+    @message.display_message("you just arrived in the cave")
     @movement.position = "origin"
-    sleep 2
     @the_cave.the_cave("X",nil,nil,nil,nil)
-    sleep 1
-    puts "that's you"
-    sleep 1
+    @message.display_message("that's you")
     the_loop
   end
 
@@ -46,11 +39,11 @@ class Game
       access_to_secret_passage
     elsif  position == "room two" # three options possible
       if @witch.already_met_witch == true &&  @witch.dead_witch == false
-        @dialogue.already_met_witch_indeed
+        @message.display_message("you already met the witch")
         the_loop
       elsif
         @witch.already_met_witch == true &&  @witch.dead_witch == true
-        @dialogue.already_kill_the_witch_indeed
+        @message.display_message("you already kill the witch")
         the_loop
       else
         witch_scenario
@@ -60,7 +53,7 @@ class Game
     elsif position == "secret passage" && @ever_been_to_room_three == nil
       in_the_secret_passage
     elsif position == "secret passage" && @ever_been_to_room_three == true
-      @dialogue.the_end
+      @message.display_message("Thank's for playing !!")
     else
       the_loop
     end
@@ -74,7 +67,7 @@ class Game
 
   def access_to_secret_passage # show the begining of a secret passage
     @the_cave.is_there_a_secret_passage?(nil,"X",nil,nil,nil)
-    @dialogue.room_empty
+    @message.display_message("This room is empty")
     the_loop
   end
 
@@ -85,10 +78,9 @@ class Game
   end
 
   def the_loop
-    @dialogue.wich_direction
+    @message.display_message("where do you want to go?(arrow keys + enter")
     get_direction
     @movement.movement(@move,@movement.position,@ever_been_to_room_three)
-    puts "the position at the loop point is #{@position}"
     @the_cave.map_the_move(@movement.position)
     check_room(@movement.position,@ever_been_to_room_three)
   end
@@ -98,7 +90,8 @@ class Game
   end
 
   def meet_dragon
-    @dialogue.want_to_fight?
+    @message.display_message("Oh my god, the King of Dragons is here")
+    @message.display_message("want to fight?(yes/no)")
     ask_for_fight
     scenario_dragon(@response,@witch.witch_give_secret_weapon)
   end
@@ -116,10 +109,8 @@ class Game
       @dragon.leave
       the_loop
     else
-      @dialogue.sorry?
+      @message.display_message("what did you say?")
       fight?
     end
   end
-
-
 end

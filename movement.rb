@@ -63,23 +63,20 @@ class Movement
     elsif position == "room three"
       @position = "origin"
     else
-      @dialogue.wrong_direction
+      wrong_direction
     end
   end
 
   def wrong_direction
-    puts "Focus on the four arrows and don't choose a wrong direction Mr. blind !"
-    sleep 2
+    @message.display_message("Focus on the four arrows and don't choose a wrong direction Mr. blind !")
   end
 
   def get_out
-    puts "get out !!! he's gonna burn you up !"
-    sleep 2
+    @message.display_message("get out !!! he's gonna burn you up !")
   end
 
   def cannot_get_out
-    puts "You did a long quest to finally find this cave, you can't run away now !"
-    sleep 1
+    @message.display_message("You did a long quest to finally find this cave, you can't run away now !")
   end
 
 end

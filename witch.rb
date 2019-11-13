@@ -11,7 +11,7 @@ class Witch
   def scenario
     @already_met_witch = true
     meet_the_witch
-    puts "What do you want to do ? (kneel/hit)"
+    @message.display_message("What do you want to do ? (kneel/hit)")
     @decision = get_decision
     apply_choice(@decision)
   end
@@ -31,7 +31,7 @@ class Witch
   end
 
   def meet_the_witch
-     puts `clear`
+     puts`clear`
      puts "     ____           /\\ "
      puts "    _|..|_  /    __/  \\__"
      puts "   | |  | |/        °°     |"
@@ -40,8 +40,8 @@ class Witch
      puts "    _|  |_       / _ _  \\ /|\\ "
      puts "___________________________________________"
      sleep 1
-     puts "Oh! you met the Dark witch, witch is sometimes nice and sometimes not"
-     sleep 2
+     @message.display_message("Oh! you met the Dark witch, witch is sometimes nice and sometimes not")
+     sleep 1
    end
 
    def get_decision
@@ -56,15 +56,14 @@ class Witch
        sleep 1
        didnt_get_weapon
      else
-       puts "you didn't respond to the question properly"
+       @message.display_message("you didn't respond to the question properly")
        scenario
      end
    end
 
    def nice_witch
-     sleep 1
-     puts "you seems to be a good Knight, I'll give you a special trick that will help you to kill the king of dragons"
-     sleep 3
+     @message.display_message("you seems to be a good Knight, I'll give you a special trick that will help you to kill the king of dragons")
+     sleep 2
 
    end
 

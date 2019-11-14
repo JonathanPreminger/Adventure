@@ -3,6 +3,7 @@ require_relative "dragon"
 
 class TheCave
 
+
   def initialize
     @message = Message.new
     @dragon = Dragon.new
@@ -20,19 +21,23 @@ class TheCave
       the_cave(nil,nil,nil,"X",nil)
     when "esc"
       the_cave(nil,nil,nil,nil,"X")
+    when "nil"
+      the_cave(nil,nil,nil,nil,nil)
     end
   end
 
   def access_to_secret_passage # show the begining of a secret passage
-    is_there_a_secret_passage?(nil,"X",nil,nil,nil)
+    is_there_a_secret_passage?
     @message.display_message("This room is empty")
   end
 
   def in_the_secret_passage # take the secret passage
     @ever_been_to_room_three = true
-    secret_passage(nil,nil,nil,nil,nil,"X")
+    secret_passage
     @dragon.the_dragon_is_sleeping
   end
+
+  private
 
   def the_cave(origin,one,two,three,four)
     puts `clear`
@@ -51,41 +56,41 @@ class TheCave
     sleep 1
   end
 
-  def is_there_a_secret_passage?(origin,one,two,three,four)
+  def is_there_a_secret_passage?
     puts `clear`
     puts "         _________ "
     puts "         |       |"
     puts "         |       |__ "
-    puts "             #{one}    __   "
+    puts "             X    __   "
     puts "         |       |   "
     puts "         |__   __|   "
     puts "            | |    ______"
     puts "     _______| |___|      |"
-    puts "#{four}             #{origin}        #{two}      "
+    puts "    "
     puts "     _______   ___     "
     puts "            | |   |______|"
     puts "           _| |_ "
     puts "          |     | "
-    puts "             #{three} "
+    puts "              "
     puts "          |_____| "
   end
 
-  def secret_passage(origin,one,two,three,four,secret)
+  def secret_passage
     puts `clear`
     puts "         _________ "
     puts "         |       |"
     puts "         |       |________________ "
-    puts "             #{one}    _____________ #{secret} |   "
+    puts "                 _____________ X |   "
     puts "         |       |            |  |"
     puts "         |__   __|            "
     puts "            | |    ______     "
     puts "     _______| |___|      |    "
-    puts "#{four}             #{origin}        #{two}           "
+    puts "          "
     puts "     _______   ___            "
     puts "            | |   |______|    "
     puts "           _| |_              "
     puts "          |     |              "
-    puts "             #{three}                  "
+    puts "                           "
     puts "          |_____|             "
     sleep 1
     @message.display_message("Where ...")
@@ -93,17 +98,17 @@ class TheCave
     puts "         _________ "
     puts "         |       |"
     puts "         |       |________________ "
-    puts "             #{one}    _____________   |   "
+    puts "                  _____________  |   "
     puts "         |       |            |  |"
     puts "         |__   __|            |  |"
     puts "            | |    ______     |  |"
-    puts "     _______| |___|      |    | #{secret}|"
-    puts "#{four}             #{origin}        #{two}         |  |      "
+    puts "     _______| |___|      |    | X|"
+    puts "        |  |      "
     puts "     _______   ___            |  |"
     puts "            | |   |______|    |  |"
     puts "           _| |_              |  |"
     puts "          |     |             |  | "
-    puts "             #{three}                 |  | "
+    puts "                              |  | "
     puts "          |_____|             "
     puts "            "
     @message.display_message("Where this ...")
@@ -112,58 +117,58 @@ class TheCave
     puts "         _________ "
     puts "         |       |"
     puts "         |       |________________ "
-    puts "             #{one}    _____________   |   "
+    puts "                  _____________  |   "
     puts "         |       |            |  |"
     puts "         |__   __|            |  |"
     puts "            | |    ______     |  |"
     puts "     _______| |___|      |    |  |"
-    puts "#{four}             #{origin}        #{two}         |  |      "
+    puts "                              |  |      "
     puts "     _______   ___            |  |"
     puts "            | |   |______|    |  |"
     puts "           _| |_              |  |"
     puts "          |     |             |  | "
-    puts "             #{three}                 |  | "
+    puts "                              |  | "
     puts "          |_   _|             |  |"
     puts "                  ____________|  |"
-    puts "                  _____________#{secret}_|"
+    puts "                  _____________X_|"
     @message.display_message("Where this passage ...")
     sleep 1
     puts `clear`
     puts "         _________ "
     puts "         |       |"
     puts "         |       |________________ "
-    puts "             #{one}    _____________   |   "
+    puts "                  _____________  |   "
     puts "         |       |            |  |"
     puts "         |__   __|            |  |"
     puts "            | |    ______     |  |"
     puts "     _______| |___|      |    |  |"
-    puts "#{four}             #{origin}        #{two}         |  |      "
+    puts "                              |  |      "
     puts "     _______   ___            |  |"
     puts "            | |   |______|    |  |"
     puts "           _| |_              |  |"
     puts "          |     |             |  | "
-    puts "             #{three}                 |  | "
+    puts "                              |  | "
     puts "          |_   _|             |  |"
     puts "            | |_______________|  |"
-    puts "            |#{secret}___________________|"
+    puts "            |X___________________|"
     @message.display_message("Where this passage go ...")
     sleep 1
     puts `clear`
     puts "         _________ "
     puts "         |       |"
     puts "         |       |________________ "
-    puts "             #{one}    _____________   |   "
+    puts "                  _____________  |   "
     puts "         |       |            |  |"
     puts "         |__   __|            |  |"
     puts "            | |    ______     |  |"
     puts "     _______| |___|      |    |  |"
-    puts "#{four}             #{origin}        #{two}         |  |      "
+    puts "                              |  |      "
     puts "     _______   ___            |  |"
     puts "            | |   |______|    |  |"
     puts "           _| |_              |  |"
     puts "          |     |             |  | "
-    puts "           X #{three}                 |  | "
-    puts "          |_ #{secret} _|             |  |"
+    puts "           X                  |  | "
+    puts "          |_ X _|             |  |"
     puts "            | |_______________|  |"
     puts "            |____________________|"
     @message.display_message("The Dragon !!!")

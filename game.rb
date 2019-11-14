@@ -26,9 +26,9 @@ class Game
     @message.display_message("Welcome in the Black Knight's quest")
     @message.display_message("you have to find the King of Dragons in his deep cave...")
     @message.display_message("Your torch is at #{@round_action.torch}")
-    @the_cave.the_cave(nil,nil,nil,nil,nil)
+    @the_cave.map_the_move(nil)
     @message.display_message("you just arrived in the cave")
-    @the_cave.the_cave("X",nil,nil,nil,nil)
+    @the_cave.map_the_move("origin")
     @message.display_message("that's you")
     @round_action.round
   end

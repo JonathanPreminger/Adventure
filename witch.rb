@@ -12,6 +12,13 @@ class Witch
     @the_cave = TheCave.new
   end
 
+  def witch_scenario
+    scenario
+    @the_cave.map_the_move("room two")
+  end
+
+  private
+
   def scenario
     @already_met_witch = true
     meet_the_witch
@@ -29,11 +36,6 @@ class Witch
     @witch_give_secret_weapon = false
     @dead_witch = true
     hit_witch
-  end
-
-  def witch_scenario
-    scenario
-    @the_cave.the_cave(nil,nil,"X",nil,nil)
   end
 
   def meet_the_witch

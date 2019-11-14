@@ -24,6 +24,8 @@ class Movement
     end
   end
 
+  private
+
   def to_the_left(position, ever_been_to_room_three)
     if position == "room two"
       @position = "origin"

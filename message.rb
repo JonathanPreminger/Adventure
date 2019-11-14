@@ -4,5 +4,5 @@ class Message
     puts text
     sleep 1
   end
-  
+
 end

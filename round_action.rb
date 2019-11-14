@@ -1,8 +1,8 @@
-require_relative "dragon"
-require_relative "witch"
-require_relative "the_cave"
-require_relative "message"
-require_relative "movement"
+require_relative "non_playing_characters/dragon"
+require_relative "non_playing_characters/witch"
+require_relative "lib/the_cave"
+require_relative "./message"
+require_relative "lib/movement"
 
 class RoundAction
 

@@ -1,9 +1,7 @@
-require_relative 'the_cave'
-require_relative 'movement'
-require_relative 'message'
-require_relative 'round_action'
-
-
+require_relative 'lib/the_cave'
+require_relative 'lib/movement'
+require_relative './message'
+require_relative './round_action'
 
 class Game
 
@@ -18,6 +16,16 @@ class Game
 
   def start(safe_mode: true)
     enter_the_cave
+  rescue => error
+    if safe_mode
+      end_game(message: "We are very sorry but an error occurred.")
+    else
+      raise error
+    end
+  end
+
+  def end_game(message:)
+    abort message
   end
 
   private

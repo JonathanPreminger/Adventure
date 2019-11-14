@@ -1,5 +1,5 @@
-require_relative "message"
-require_relative "the_cave"
+require_relative "../message"
+require_relative "../lib/the_cave"
 
 class Witch
   attr_reader :witch_give_secret_weapon, :dead_witch, :already_met_witch

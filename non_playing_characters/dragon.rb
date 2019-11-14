@@ -1,5 +1,5 @@
-require_relative "message"
-require_relative "end_game"
+require_relative "../message"
+require_relative "../end_game"
 
 class Dragon
 

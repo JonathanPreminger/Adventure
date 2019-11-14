@@ -1,5 +1,5 @@
-require_relative "message"
-require_relative "dragon"
+require_relative "../message"
+require_relative "../non_playing_characters/dragon"
 
 class TheCave
 

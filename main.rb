@@ -2,4 +2,4 @@
 require_relative 'game'
 puts `clear`
 
-Game.new.start 
+Game.new.start(safe_mode: false)

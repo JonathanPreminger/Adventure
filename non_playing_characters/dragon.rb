@@ -1,11 +1,9 @@
 require_relative "../message"
 
-
 class Dragon
 
   def initialize
     @message = Message.new
-
   end
 
   def meet_dragon(secret_weapon)
@@ -16,13 +14,11 @@ class Dragon
   end
 
   def the_dragon_is_sleeping
-
     GAME.end_game(message: "the dragon is sleeping, he didn't see you yet, kill him ! Success !!!")
   end
 
   def coward_end
     GAME.end_game(message: "Bravo! You saved your life ! What a Knight")
-
   end
 
   private

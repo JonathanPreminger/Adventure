@@ -14,7 +14,9 @@ class Movement
   def movement(move, position, ever_been_to_room_three)
     case move
     when "\e[D"
-      to_the_lefty(position, ever_been_to_room_three)
+
+      to_the_left(position, ever_been_to_room_three)
+
     when "\e[C"
       to_the_right(position, ever_been_to_room_three)
     when "\e[B"

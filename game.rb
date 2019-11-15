@@ -14,7 +14,10 @@ class Game
     @round_action = RoundAction.new
   end
 
-  def start(safe_mode: true)
+
+  def play(safe_mode: true)
+    start
+
     enter_the_cave
   rescue => error
     if safe_mode
@@ -29,6 +32,12 @@ class Game
   end
 
   private
+
+
+  def start
+    puts "start"
+    Object.const_set("GAME", self)
+  end
 
   def enter_the_cave
     @message.display_message("Welcome in the Black Knight's quest")

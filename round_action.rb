@@ -15,7 +15,10 @@ class RoundAction
     @the_cave = TheCave.new
     @movement = Movement.new
     @message = Message.new
+<<<<<<< HEAD
+=======
     @end_game = EndGame.new
+>>>>>>> f2dba7de56e873ec38131f58f02a9f2df9fe0a17
   end
 
   def round
@@ -37,7 +40,12 @@ class RoundAction
   end
 
   def torch_dead?
+<<<<<<< HEAD
+    return unless @torch < 1
+    GAME.end_game(message: "Your torch is dead, it's dark, you are lost in the cave, end of the game")
+=======
     @end_game.ending_game("Your torch is dead, it's dark, you are lost in the cave, end of the game") unless @torch > 0
+>>>>>>> f2dba7de56e873ec38131f58f02a9f2df9fe0a17
   end
 
   def get_direction

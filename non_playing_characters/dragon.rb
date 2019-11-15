@@ -1,11 +1,11 @@
 require_relative "../message"
-require_relative "../end_game"
+
 
 class Dragon
 
   def initialize
     @message = Message.new
-    @end_game = EndGame.new
+
   end
 
   def meet_dragon(secret_weapon)
@@ -16,11 +16,13 @@ class Dragon
   end
 
   def the_dragon_is_sleeping
-    @end_game.ending_game("the dragon is sleeping, he didn't see you yet, kill him ! Success !!!")
+
+    GAME.end_game(message: "the dragon is sleeping, he didn't see you yet, kill him ! Success !!!")
   end
 
   def coward_end
-    @end_game.ending_game("Bravo! You saved your life ! What a Knight")
+    GAME.end_game(message: "Bravo! You saved your life ! What a Knight")
+
   end
 
   private
@@ -44,12 +46,15 @@ class Dragon
 
   def fight_without_secret_weapon
     @message.display_message("lets fight...")
-    @end_game.ending_game("He just burn you up, you're dead, Game Over...")
+
+    GAME.end_game(message: "He just burn you up, you're dead, Game Over...")
+
   end
 
   def fight_with_secret_weapon
     @message.display_message("lets fight...")
-    @end_game.ending_game("You kill the King's Dragon with the Magic Secret Weapon !!! Game Success !!!")
+    GAME.end_game(message: "You kill the King's Dragon with the Magic Secret Weapon !!! Game Success !!!")
+
   end
 
   def leave

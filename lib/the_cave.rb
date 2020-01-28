@@ -1,8 +1,8 @@
 require_relative "../message"
+require_relative "../round_action"
 require_relative "../non_playing_characters/dragon"
 
 class TheCave
-
 
   def initialize
     @message = Message.new
@@ -11,18 +11,12 @@ class TheCave
 
   def map_the_move(position)
     case position
-    when "origin"
-      the_cave("X",nil,nil,nil,nil)
-    when "room one"
-      the_cave(nil,"X",nil,nil,nil)
-    when "room two"
-      the_cave(nil,nil,"X",nil,nil)
-    when "room three"
-      the_cave(nil,nil,nil,"X",nil)
-    when "esc"
-      the_cave(nil,nil,nil,nil,"X")
-    when "nil"
-      the_cave(nil,nil,nil,nil,nil)
+      when "origin" then the_cave("X",nil,nil,nil,nil)
+      when "room one" then the_cave(nil,"X",nil,nil,nil)
+      when "room two" then the_cave(nil,nil,"X",nil,nil)
+      when "room three" then the_cave(nil,nil,nil,"X",nil)
+      when "esc" then the_cave(nil,nil,nil,nil,"X")
+      when "nil" then the_cave(nil,nil,nil,nil,nil)
     end
   end
 
@@ -41,6 +35,9 @@ class TheCave
 
   def the_cave(origin,one,two,three,four)
     puts `clear`
+    puts "   "
+    puts "   "
+    puts "   "
     puts "             #{one}   "
     puts "         |       |   "
     puts "         |__   __|   "
@@ -53,6 +50,10 @@ class TheCave
     puts "          |     | "
     puts "             #{three} "
     puts "          |_____| "
+    puts "TORCH :#{RoundAction.class_variable_get(:@@torch)} "
+    puts "____________"
+    puts "LIFE : #{$life}"
+    puts "____________"
     sleep 1
   end
 
@@ -73,6 +74,10 @@ class TheCave
     puts "          |     | "
     puts "              "
     puts "          |_____| "
+    puts "TORCH :#{RoundAction.class_variable_get(:@@torch)} "
+    puts "____________"
+    puts "LIFE : #{$life}"
+    puts "____________"
   end
 
   def secret_passage

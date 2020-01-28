@@ -4,7 +4,6 @@
   require_relative '../lib/movement.rb'
   require_relative '../non_playing_characters/witch.rb'
 
-
   # 1
   describe 'movement#movement' do
     it 'place the player on origin from room two' do

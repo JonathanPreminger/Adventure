@@ -8,8 +8,8 @@ class RoundAction
 
   attr_reader :torch
 
-  def initialize
-    @torch = 10
+  def initialize(torch)
+    @@torch = torch
     @dragon = Dragon.new
     @witch = Witch.new
     @the_cave = TheCave.new
@@ -20,7 +20,7 @@ class RoundAction
   def round
     extinguish_the_torch
     torch_dead?
-    @message.display_message("Your torch is at #{@torch}")
+    @message.display_message("Your torch is at #{@@torch}")
     @message.display_message("where do you want to go?(arrow keys + enter")
     get_direction
     @movement.movement(@move,@movement.position,@ever_been_to_room_three)
@@ -32,12 +32,12 @@ class RoundAction
   private
 
   def extinguish_the_torch
-    @torch -= 1
+    @@torch -= 1
   end
 
   def torch_dead?
-    return unless @torch < 1
-    GAME.end_game(message: "Your torch is dead, it's dark, you are lost in the cave, end of the game")
+    return unless @@torch < 1
+    GAME.end_game(success:false, message: "Your torch is dead, it's dark, you are lost in the cave, end of the game")
   end
 
   def get_direction
@@ -46,16 +46,11 @@ class RoundAction
 
   def check_room(position,ever_been_to_room_three)
     case position
-    when "room three"
-      room_three(ever_been_to_room_three)
-    when "room one"
-      room_one
-    when "room two" # three options possible
-      room_two
-    when "esc"
-      escape
-    when "secret passage"
-      secret_passage(ever_been_to_room_three)
+      when "room three" then room_three(ever_been_to_room_three)
+      when "room one" then room_one
+      when "room two" then room_two
+      when "esc" then escape
+      when "secret passage" then secret_passage(ever_been_to_room_three)
     end
   end
 

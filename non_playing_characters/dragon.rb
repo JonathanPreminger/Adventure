@@ -14,11 +14,11 @@ class Dragon
   end
 
   def the_dragon_is_sleeping
-    GAME.end_game(message: "the dragon is sleeping, he didn't see you yet, kill him ! Success !!!")
+    GAME.end_game(success:true, message: "the dragon is sleeping, he didn't see you yet, kill him ! Success !!!")
   end
 
   def coward_end
-    GAME.end_game(message: "Bravo! You saved your life ! What a Knight")
+    GAME.end_game(success:false, message: "Bravo! You saved your life ! But the Dragon is still alive... What a Knight")
   end
 
   private
@@ -42,15 +42,14 @@ class Dragon
 
   def fight_without_secret_weapon
     @message.display_message("lets fight...")
-
-    GAME.end_game(message: "He just burn you up, you're dead, Game Over...")
-
+    GAME.end_game(message: "He just burn you up, you're dead, Game Over...", success:false)
+    sleep 3
   end
 
   def fight_with_secret_weapon
     @message.display_message("lets fight...")
-    GAME.end_game(message: "You kill the King's Dragon with the Magic Secret Weapon !!! Game Success !!!")
-
+    GAME.end_game(message: "You kill the King's Dragon with the Magic Secret Weapon !!! Game Success !!!", success:true)
+    sleep 3
   end
 
   def leave
